@@ -1,0 +1,22 @@
+flowchart LR
+    BUYER["Student Buyer<br/>External entity"]
+    SELLER["Student Seller<br/>External entity"]
+    SRC["SRC<br/>External entity<br/>(oversight)"]
+    ADMIN["Platform administrator<br/>External entity"]
+    UNI["University Management<br/>External entity"]
+
+    SYS(("TRANS UB<br/>Marketplace<br/>system"))
+
+    BUYER -->|"Search/browse/filter, cart and order confirmation, review submission"| SYS
+    SYS -->|"Catalogue results, listing details, order status, seller rating"| BUYER
+
+    SELLER -->|"Listing create/edit, mark sold/unavailable, mark order delivered"| SYS
+    SYS -->|"New order alert, buyer contact detail (post confirmation)"| SELLER
+
+    SRC -->|"Summary on request, dispute/report"| SYS
+    SYS -->|"Escalated dispute enquiries"| SRC
+
+    ADMIN -->|"Listing approval/removal, account suspension, report resolution"| SYS
+    SYS -->|"Flagged listings, user reports, pending verifications"| ADMIN
+
+    SYS -.-|"Policy and liability interest<br/>(no direct access to the system)"| UNI
