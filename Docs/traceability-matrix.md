@@ -13,12 +13,16 @@
 
 Traceability Structure
 
-Requirement → Use Case → Analysis Element → Verification
+Requirement -> Use Case -> Analysis Element -> Verification
 
 Scope Constraints
 
 • Payments are handled outside the TRANS-UB platform.
+
 • Physical handovers take place outside the platform.
+
 • Only approved low-risk physical goods are included in the prototype.
+
 • Food, medicines, alcohol, stolen property, restricted products and high-risk services are excluded.
+
 • Student-ID verification uses synthetic data and is not connected to official University of Botswana records.
