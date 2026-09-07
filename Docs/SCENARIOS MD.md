@@ -2,9 +2,9 @@
 
 Source / Stimulus: A student searches for a textbook or other item.
 
-Environment: Student Hub is operating normally.
+Environment: TRANS-UB operating normally.
 
-Artifact: Student Hub search and listing service.
+Artifact: TRANS-UB search and listing service.
 
 Response: The system retrieves and displays the relevant listings.
 
@@ -14,7 +14,7 @@ Measure: Search results should be visible within 2 seconds for at least 95% of s
 
 Source / Stimulus: A student selects a product listing to view its details.
 
-Environment: Student Hub is operating normally.
+Environment: TRANS-UB is operating normally.
 
 Artifact: Product listing and listing-details service.
 
@@ -28,7 +28,7 @@ Source / Stimulus: An unverified student attempts to create a listing.
 
 Environment: The student has registered but has not completed student verification.
 
-Artifact: Student Hub seller and listing functions.
+Artifact: TRANS-UB seller and listing functions.
 
 Response: The system rejects the request and prevents the student from publishing the listing.
 
@@ -50,7 +50,7 @@ Measure: 100% of incomplete listings must be rejected before publication.
 
 Source / Stimulus: A buyer confirms an order.
 
-Environment: Student Hub is operating normally.
+Environment: TRANS-UB is operating normally.
 
 Artifact: Order record and listing status.
 
@@ -62,11 +62,11 @@ Measure: 99% of valid order confirmations should be completed within 3 seconds w
 
 Source / Stimulus: A buyer submits the same order more than once.
 
-Environment: Student Hub is processing the order.
+Environment: TRANS-UB is processing the order.
 
 Artifact: Order record and order-confirmation process.
 
-Response: The system recognises the repeated submission and keeps only one valid order.
+Response: The system recognizes the repeated submission and keeps only one valid order.
 
 Measure: Zero duplicate orders should be created from repeated identical submissions.
 
@@ -76,7 +76,7 @@ Source / Stimulus: A buyer sends a message to a seller while the messaging servi
 
 Environment: The external messaging service is temporarily unavailable.
 
-Artifact: Student Hub communication request.
+Artifact: TRANS-UB communication request.
 
 Response: The system preserves the message for retry or clearly informs the user that delivery has failed rather than silently losing the message.
 
@@ -86,7 +86,7 @@ Measure: 100% of submitted messages must either be delivered or retained for ret
 
 Source / Stimulus: A seller changes information on an existing listing.
 
-Environment: The listing already exists in Student Hub.
+Environment: The listing already exists in TRANS-UB.
 
 Artifact: Listing record.
 
