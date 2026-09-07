@@ -6,6 +6,7 @@ classDiagram
         verificationStatus
         accountStatus
         /rating
+        isEligible()
         currentRating()
         suspend()
     }
@@ -16,6 +17,7 @@ classDiagram
         category
         price
         status
+        isReservableBy(buyer)
         submitForApproval()
         reserve()
         release()

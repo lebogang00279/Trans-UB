@@ -81,9 +81,9 @@ These are the ones the brief asks to strip out. Each is a screen, a page, a comp
 
 ## The classes
 
-**StudentAccount** — a verified UB student. Knows its student number, contact detail, verification outcome and whether it is active or suspended, and can produce its current rating from completed reviews. Plays buyer, seller or administrator depending on the interaction.
+**StudentAccount** — a verified UB student. Knows its student number, contact detail, verification outcome and whether it is active or suspended, answers whether it is eligible to transact, and can produce its current rating from completed reviews. Plays buyer, seller or administrator depending on the interaction.
 
-**Listing** — one item or service offered by a seller. Knows its title, category, price and current status, and is responsible for moving between Available, Reserved and Sold without ever being Reserved with no order behind it.
+**Listing** — one item or service offered by a seller. Knows its title, category, price and current status, answers whether a given buyer may reserve it, and is responsible for moving between Available, Reserved and Sold without ever being Reserved with no order behind it.
 
 **ListingApproval** — an administrator's decision that a listing may or may not go live. Knows the outcome, the reason and when it was made, and which account made it.
 
@@ -124,6 +124,7 @@ classDiagram
         verificationStatus
         accountStatus
         /rating
+        isEligible()
         currentRating()
         suspend()
     }
@@ -134,6 +135,7 @@ classDiagram
         category
         price
         status
+        isReservableBy(buyer)
         submitForApproval()
         reserve()
         release()
@@ -219,6 +221,10 @@ Every step lands somewhere except step 3, and I am comfortable with that. Step 3
 1. Is the platform administrator a role of StudentAccount or a separate kind of account? The glossary says our team first and a student moderator later. If it is the team, the account may not be a student at all and the verification attribute makes no sense for it. I modelled it as a role for now, and this is the one I would most like the team to settle.
 2. Who causes an OrderStatusChange when an order expires? Nobody does. Either the actor end becomes 0..1, or we accept a system actor, which starts to look like machinery leaking into the domain.
 3. Does an important edit produce a second ListingApproval or overwrite the first? The multiplicity above says a second one, which keeps the history, but this depends on the "important edit" rule that UC-05 already flags as undecided.
+
+## Revision, Lab 05
+
+Building the sequence diagram for UC-05 ([Models/sequence-core-use-case.md](sequence-core-use-case.md)) showed that two responsibilities the interaction needs had no home. I added `isEligible()` to StudentAccount and `isReservableBy(buyer)` to Listing, and re-exported the diagram. Nothing else changed. The rules those two operations answer were already written into the association table above, they just had no operation to sit behind.
 
 ## Notes for the team
 

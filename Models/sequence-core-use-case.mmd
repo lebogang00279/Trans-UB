@@ -1,0 +1,57 @@
+sequenceDiagram
+    autonumber
+    actor Buyer as Student buyer
+    participant B as :ReserveListingBoundary
+    participant C as :ReserveListingControl
+    participant Acc as buyer:StudentAccount
+    participant L as listing:Listing
+    participant O as order:Order
+    participant Hst as change:OrderStatusChange
+    participant N as notice:Notification
+    actor Seller as Student seller
+
+    Buyer->>B: ask to reserve listing
+    B->>C: reserve(listing, buyer)
+    activate C
+
+    Note over C,L: Validation. UC-05 preconditions 1 to 5.
+    C->>Acc: isEligible()
+    Acc-->>C: verified, active, not suspended
+    C->>L: isReservableBy(buyer)
+    L-->>C: Approved, Available, buyer is not the seller
+
+    C-->>B: reservation terms
+    deactivate C
+    B-->>Buyer: seller has 24 hours, cancel any time before handover,<br/>payment and collection arranged offline (D-001)
+
+    Buyer->>B: confirm, optional handover note
+    B->>C: confirmReserve(note)
+    activate C
+
+    Note over C,L: The listing is checked a second time here, because the<br/>first check is already stale by the time the buyer confirms.<br/>The re-check and the state change happen as one unit, so a<br/>second buyer confirming at the same moment finds it<br/>Reserved and takes the lower branch (ext 5a).
+    C->>L: isReservableBy(buyer)
+
+    alt Listing is still Available
+        L-->>C: still reservable
+        C->>O: create(buyer, listing, note, deadline = now + 24h)
+        activate O
+        O->>Hst: create(none to Pending, buyer, now)
+        O-->>C: order reference, status Pending
+        deactivate O
+        C->>L: reserve(order)
+        L-->>C: status Reserved
+        C->>N: raise(new order, seller)
+        N->>Seller: notify pending order
+        opt Notice cannot be delivered (ext 6a, QS 7)
+            N->>N: recordAttempt(failed, queued for retry)
+            Note over C,N: The order stands. A failed notice is never a<br/>reason to roll back a reservation.
+        end
+        C-->>B: order reference, status, deadline
+        B-->>Buyer: reservation confirmed
+    else Listing no longer Available (ext 2a, proposal section 7)
+        L-->>C: refused. Status is Reserved, Sold, Removed or Pending Approval
+        Note over C,O: No Order is created and the listing keeps the status<br/>it already had. This is the UC-05 minimal guarantee.
+        C-->>B: refusal with reason
+        B-->>Buyer: explain, refresh the listing, offer approved<br/>listings in the same category
+    end
+    deactivate C
