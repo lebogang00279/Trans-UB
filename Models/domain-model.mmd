@@ -1,0 +1,75 @@
+classDiagram
+    class StudentAccount {
+        studentNumber
+        name
+        contactDetail
+        verificationStatus
+        accountStatus
+        /rating
+        currentRating()
+        suspend()
+    }
+
+    class Listing {
+        title
+        description
+        category
+        price
+        status
+        submitForApproval()
+        reserve()
+        release()
+        markSold()
+    }
+
+    class ListingApproval {
+        outcome
+        reason
+        decidedAt
+    }
+
+    class Order {
+        reference
+        placedAt
+        responseDeadline
+        status
+        buyerNote
+        accept()
+        reject()
+        cancel()
+        expire()
+        markDelivered()
+        confirmReceipt()
+    }
+
+    class OrderStatusChange {
+        fromStatus
+        toStatus
+        changedAt
+    }
+
+    class Notification {
+        subject
+        raisedAt
+        deliveryOutcome
+        attempts
+        recordAttempt()
+    }
+
+    class Review {
+        score
+        comment
+        submittedAt
+    }
+
+    StudentAccount "1" -- "0..*" Listing : offers (as seller)
+    Listing "1" -- "0..*" ListingApproval : is decided by
+    StudentAccount "1" -- "0..*" ListingApproval : records (as administrator)
+    StudentAccount "1" -- "0..*" Order : places (as buyer)
+    Order "0..*" -- "1" Listing : reserves
+    Order "1" -- "1..*" OrderStatusChange : is tracked by
+    StudentAccount "1" -- "0..*" OrderStatusChange : causes
+    Order "1" -- "0..*" Notification : raises
+    Notification "0..*" -- "1" StudentAccount : informs
+    Order "1" -- "0..1" Review : unlocks
+    Review "0..*" -- "1" StudentAccount : rates (as seller)
