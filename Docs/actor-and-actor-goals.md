@@ -1,0 +1,9 @@
+# TRANS-UB: Actors and Actor Goals
+
+| Actor | Role / Description | Actor Goals |
+| :--- | :--- | :--- |
+| **Student Business Owner (Seller)** | A UB student selling low-risk physical items | * Create and edit listings for low-risk physical goods<br>* Gain visibility and build trust with student buyers<br>* Manage, accept, or reject incoming order/reservation requests<br>* Track order status and mark items as delivered after physical handover |
+| **Student Customer (Buyer)** | A UB student searching to purchase or reserve items | * Search, filter, and compare approved listings by price, category, and seller rating<br>* Reserve or order items without scrolling through multiple informal chat groups<br>* Cancel orders prior to physical handover<br>* Confirm receipt of completed orders and submit seller reviews |
+| **Platform Administrator** | Project team members moderating the marketplace | * Review, approve, or reject new and edited listings based on prohibited item rules<br>* Moderate users, handle report submissions, and conduct dispute reviews<br>* Remove listings, issue warnings, or suspend user accounts<br>* Escalate serious unresolved cases to the Student Representative Council (SRC) |
+| **Student Representative Council (SRC)** | Student governing body with oversight interest | * Provide governance oversight on student trading activities<br>* Receive and handle serious, unresolved dispute escalations involving fraud or prohibited items |
+| **University Management** | Indirect institutional stakeholder | * Ensure student safety and protect the University's name and reputation<br>* Ensure TRANS-UB is clearly disclaimed as an unofficial platform that does not integrate with official UB student records or payment systems |
