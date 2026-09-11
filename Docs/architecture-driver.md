@@ -1,5 +1,4 @@
 # TRANS-UB Architecture Drivers
-
 The Phase 2 architecture drivers come from the Phase 1 quality scenarios and constraints, not from a preferred framework.
 
 ## Driver 1 — Transaction consistency and duplicate-reservation prevention
