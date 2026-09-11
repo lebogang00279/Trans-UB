@@ -1,4 +1,4 @@
-|# TRANS-UB Traceability Matrix
+ TRANS-UB Traceability Matrix
 
 | Requirement ID | Core requirement | Use case | Analysis element(s) | Verification |
 |---|---|---|---|---|
