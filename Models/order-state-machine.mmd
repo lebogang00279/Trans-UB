@@ -1,0 +1,17 @@
+stateDiagram-v2
+    [*] --> Pending : reservation succeeds
+
+    Pending --> Accepted : seller accepts
+    Pending --> Rejected : seller rejects
+    Pending --> Expired : 24h no response
+    Pending --> Cancelled : buyer cancels
+
+    Accepted --> Delivered : seller marks Delivered
+    Accepted --> Cancelled : buyer cancels before handover
+
+    Delivered --> Completed : buyer confirms receipt
+
+    Rejected --> [*]
+    Expired --> [*]
+    Cancelled --> [*]
+    Completed --> [*]
