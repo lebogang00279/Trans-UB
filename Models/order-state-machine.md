@@ -1,11 +1,5 @@
 # TRANS-UB — Order State Machine
-
 Primary requirements: FR-05, FR-06, FR-07 and FR-08.
-
-Editable source: `Models/order-state-machine.mmd`  
-Readable export required before final tag: `Models/order-state-machine.svg`
-
-## Lifecycle
 
 ```mermaid
 stateDiagram-v2
