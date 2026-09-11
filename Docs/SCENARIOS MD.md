@@ -1,119 +1,81 @@
-1\. Search Performance
+# TRANS-UB Quality Scenarios
 
-Source / Stimulus: A student searches for a textbook or other item.
+## QR-01 — Search performance
 
-Environment: TRANS-UB operating normally.
+**Source / stimulus:** A student searches for a textbook or other approved low-risk item.  
+**Environment:** TRANS-UB is operating normally.  
+**Artifact:** Listing search and catalogue data.  
+**Response:** Relevant approved listings are retrieved and displayed.  
+**Measure:** Results are visible within 2 seconds for at least 95% of searches.
 
-Artifact: TRANS-UB search and listing service.
+## QR-02 — Listing performance
 
-Response: The system retrieves and displays the relevant listings.
+**Source / stimulus:** A student opens a listing.  
+**Environment:** TRANS-UB is operating normally.  
+**Artifact:** Listing record.  
+**Response:** Current product information, price, seller information and availability are displayed.  
+**Measure:** Listing details are displayed within 2 seconds for at least 95% of requests.
 
-Measure: Search results should be visible within 2 seconds for at least 95% of searches.
+## QR-03 — Student verification / access control
 
-2\. Listing Performance
+**Source / stimulus:** An unverified account attempts a protected listing action.  
+**Environment:** The account exists but has not passed simulated student verification.  
+**Artifact:** StudentAccount and protected listing function.  
+**Response:** The action is rejected.  
+**Measure:** 100% of protected listing attempts by unverified accounts are rejected.
 
-Source / Stimulus: A student selects a product listing to view its details.
+## QR-04 — Listing validation
 
-Environment: TRANS-UB is operating normally.
+**Source / stimulus:** A seller submits a listing with required information missing or a prohibited category.  
+**Environment:** The seller is creating or editing a listing.  
+**Artifact:** Listing and approval rules.  
+**Response:** The listing is rejected from publication and the reason is shown.  
+**Measure:** 100% of incomplete or prohibited listings are prevented from becoming Available.
 
-Artifact: Product listing and listing-details service.
+## QR-05 — Order reliability
 
-Response: The system displays the current product information, price, seller details, and availability.
+**Source / stimulus:** An eligible buyer confirms reservation of an Available listing.  
+**Environment:** TRANS-UB is operating normally.  
+**Artifact:** Order and Listing.  
+**Response:** Exactly one Pending order is recorded and the listing becomes Reserved as one consistent result.  
+**Measure:** At least 99% of valid confirmations finish within 3 seconds without partial or lost transaction state.
 
-Measure: The listing details should be displayed within 2 seconds for at least 95% of requests.
+## QR-06 — Duplicate reservation prevention
 
-3\. Student Verification / Access Control
+**Source / stimulus:** The same reservation is submitted repeatedly, or two buyers confirm the same listing concurrently.  
+**Environment:** Reservation processing is active.  
+**Artifact:** Order and Listing.  
+**Response:** The system keeps at most one live reservation for the listing.  
+**Measure:** Zero duplicate live reservations are created.
 
-Source / Stimulus: An unverified student attempts to create a listing.
+## QR-07 — Seller notification failure tolerance
 
-Environment: The student has registered but has not completed student verification.
+**Source / stimulus:** A Pending order is created while immediate seller notification delivery fails.  
+**Environment:** The notification channel is temporarily unavailable.  
+**Artifact:** Notification and Order.  
+**Response:** The reservation remains valid; the notification outcome is recorded for retry or later visibility.  
+**Measure:** 100% of valid reservations remain stored even when immediate notification fails, and every failed notification is recorded.
 
-Artifact: TRANS-UB seller and listing functions.
+## QR-08 — Listing update integrity
 
-Response: The system rejects the request and prevents the student from publishing the listing.
+**Source / stimulus:** A seller edits an existing listing.  
+**Environment:** The listing exists.  
+**Artifact:** Listing.  
+**Response:** Only the intended seller-owned listing is changed.  
+**Measure:** 100% of valid listing updates affect only the intended listing.
 
-Measure: 100% of listing attempts by unverified students must be rejected.
+## QR-09 — Review integrity
 
-4\. Listing Validation
+**Source / stimulus:** A buyer attempts to review a transaction.  
+**Environment:** The linked order is not yet Completed.  
+**Artifact:** Review and Order.  
+**Response:** The review is rejected.  
+**Measure:** 100% of reviews for non-Completed orders are rejected.
 
-Source / Stimulus: A seller submits a listing with required information missing.
+## QR-10 — Stale listing conflict
 
-Environment: The seller is creating a new listing.
-
-Artifact: Listing record and validation service.
-
-Response: The system rejects the incomplete listing and identifies the information that is missing.
-
-Measure: 100% of incomplete listings must be rejected before publication.
-
-5\. Order Reliability
-
-Source / Stimulus: A buyer confirms an order.
-
-Environment: TRANS-UB is operating normally.
-
-Artifact: Order record and listing status.
-
-Response: The system records the order and correctly updates the relevant order/listing status.
-
-Measure: 99% of valid order confirmations should be completed within 3 seconds without data loss.
-
-6\. Duplicate Order Prevention
-
-Source / Stimulus: A buyer submits the same order more than once.
-
-Environment: TRANS-UB is processing the order.
-
-Artifact: Order record and order-confirmation process.
-
-Response: The system recognizes the repeated submission and keeps only one valid order.
-
-Measure: Zero duplicate orders should be created from repeated identical submissions.
-
-7\. Messaging Service Failure
-
-Source / Stimulus: A buyer sends a message to a seller while the messaging service is unavailable.
-
-Environment: The external messaging service is temporarily unavailable.
-
-Artifact: TRANS-UB communication request.
-
-Response: The system preserves the message for retry or clearly informs the user that delivery has failed rather than silently losing the message.
-
-Measure: 100% of submitted messages must either be delivered or retained for retry.
-
-8\. Listing Update Integrity
-
-Source / Stimulus: A seller changes information on an existing listing.
-
-Environment: The listing already exists in TRANS-UB.
-
-Artifact: Listing record.
-
-Response: The system updates the intended listing without changing another seller's listing.
-
-Measure: 100% of valid listing updates must be applied to the correct listing only.
-
-9\. Review Integrity
-
-Source / Stimulus: A buyer attempts to submit a review for a transaction that has not been confirmed.
-
-Environment: The transaction is still unconfirmed.
-
-Artifact: Review and transaction records.
-
-Response: The system rejects the review because the transaction has not been confirmed.
-
-Measure: 100% of reviews linked to unconfirmed transactions must be rejected.
-
-10\. Stale Listing / Order Conflict
-
-Source / Stimulus: A buyer attempts to order an item using listing information that is no longer current.
-
-Environment: The seller has changed the listing's availability or status since the buyer viewed it.
-
-Artifact: Listing and order records.
-
-Response: The system detects the outdated information and prevents an invalid order, or requires the buyer to use the current listing information.
-
-Measure: 100% of orders based on outdated or unavailable listing states must be rejected or reconciled before confirmation.
+**Source / stimulus:** A buyer confirms a reservation using a view that has become stale.  
+**Environment:** The listing changed after the buyer first viewed it.  
+**Artifact:** Listing and Order.  
+**Response:** The system rechecks current availability before creating the order and refuses the reservation if the listing is no longer Available.  
+**Measure:** 100% of reservations against unavailable listing state are rejected before order creation.
