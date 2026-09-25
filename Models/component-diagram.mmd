@@ -1,0 +1,46 @@
+flowchart LR
+    Buyer[Student Buyer / Seller]
+    Admin[Platform Administrator]
+    SRC[SRC]
+
+    subgraph TRANSUB[TRANS-UB Modular Layered Monolith]
+        UI[Presentation / Web UI]
+        ACC[Account & Authentication]
+        LIST[Listing Management]
+        ORD[Order / Reservation]
+        REV[Review Management]
+        REP[Reporting / Moderation]
+        NOTIF[Notification]
+        PERSIST[Persistence Layer]
+    end
+
+    DB[(TRANS-UB Database)]
+    OFF[Offline Payment & Physical Handover\nOutside system boundary]
+
+    Buyer --> UI
+    Admin --> UI
+    SRC --> REP
+
+    UI --> ACC
+    UI --> LIST
+    UI --> ORD
+    UI --> REV
+    UI --> REP
+
+    ORD --> ACC
+    ORD --> LIST
+    ORD --> NOTIF
+    REV --> ORD
+    REP --> ACC
+    REP --> LIST
+    REP --> ORD
+
+    ACC --> PERSIST
+    LIST --> PERSIST
+    ORD --> PERSIST
+    REV --> PERSIST
+    REP --> PERSIST
+    NOTIF --> PERSIST
+    PERSIST --> DB
+
+    Buyer -.arranges outside platform.-> OFF
