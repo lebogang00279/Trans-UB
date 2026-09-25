@@ -1,0 +1,190 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="980" viewBox="0 0 1700 980">
+<defs>
+  <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+    <path d="M0,0 L0,6 L9,3 z" fill="#000"/>
+  </marker>
+</defs>
+<style>
+  text{font-family:Arial,sans-serif;fill:#000}
+  .sys{fill:#86d3f7;stroke:#000;stroke-width:2}
+  .comp{fill:#86d3f7;stroke:#000;stroke-width:2}
+  .label{font-size:18px}
+  .small{font-size:16px}
+  .title{font-size:24px;font-weight:bold}
+  .red{fill:#e53935;font-size:28px;font-weight:bold}
+  .arrowred{stroke:#e53935;stroke-width:4;fill:none;marker-end:url(#arrowRed)}
+  .line{stroke:#000;stroke-width:2;fill:none}
+  .socket{stroke:#000;stroke-width:3;fill:none}
+  .lolli{stroke:#000;stroke-width:3;fill:#86d3f7}
+  .port{fill:#86d3f7;stroke:#000;stroke-width:2}
+</style>
+<defs>
+  <marker id="arrowRed" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+    <path d="M0,0 L0,6 L9,3 z" fill="#e53935"/>
+  </marker>
+</defs>
+
+<!-- annotations -->
+<text x="745" y="45" class="red">Component</text>
+<line x1="790" y1="55" x2="790" y2="110" class="arrowred"/>
+<text x="55" y="250" class="red">Provided</text>
+<text x="5" y="290" class="red">Interface</text>
+<line x1="115" y1="270" x2="165" y2="270" class="arrowred"/>
+<text x="180" y="175" class="red">Port</text>
+<line x1="230" y1="185" x2="265" y2="220" class="arrowred"/>
+<text x="1470" y="260" class="red">Required Interface</text>
+<line x1="1535" y1="275" x2="1535" y2="325" class="arrowred"/>
+
+<!-- system boundary -->
+<rect x="290" y="110" width="1170" height="720" class="sys"/>
+<text x="820" y="150" text-anchor="middle" class="small">&lt;&lt;component&gt;&gt;</text>
+<text x="820" y="188" text-anchor="middle" class="title">TRANS-UB Platform</text>
+
+<!-- component icons -->
+<!-- function -->
+<!-- helper note: component icon drawn as 3 tabs -->
+<g id="icon">
+  <rect x="0" y="0" width="22" height="8" fill="none" stroke="#000" stroke-width="2"/>
+  <rect x="10" y="8" width="12" height="8" fill="none" stroke="#000" stroke-width="2"/>
+  <rect x="0" y="16" width="22" height="8" fill="none" stroke="#000" stroke-width="2"/>
+</g>
+
+<!-- components -->
+<rect x="545" y="255" width="280" height="95" class="comp"/>
+<text x="685" y="285" text-anchor="middle" class="small">&lt;&lt;component&gt;&gt;</text>
+<text x="685" y="320" text-anchor="middle" class="title" style="font-size:22px">Authentication</text>
+<use href="#icon" x="792" y="270"/>
+
+<rect x="470" y="430" width="310" height="105" class="comp"/>
+<text x="625" y="462" text-anchor="middle" class="small">&lt;&lt;component&gt;&gt;</text>
+<text x="625" y="500" text-anchor="middle" class="title" style="font-size:22px">Listing Management</text>
+<use href="#icon" x="745" y="445"/>
+
+<rect x="845" y="430" width="295" height="105" class="comp"/>
+<text x="992" y="462" text-anchor="middle" class="small">&lt;&lt;component&gt;&gt;</text>
+<text x="992" y="500" text-anchor="middle" class="title" style="font-size:22px">Order / Reservation</text>
+<use href="#icon" x="1105" y="445"/>
+
+<rect x="1225" y="430" width="225" height="105" class="comp"/>
+<text x="1337" y="462" text-anchor="middle" class="small">&lt;&lt;component&gt;&gt;</text>
+<text x="1337" y="500" text-anchor="middle" class="title" style="font-size:22px">Notification</text>
+<use href="#icon" x="1415" y="445"/>
+
+<rect x="370" y="635" width="300" height="105" class="comp"/>
+<text x="520" y="667" text-anchor="middle" class="small">&lt;&lt;component&gt;&gt;</text>
+<text x="520" y="705" text-anchor="middle" class="title" style="font-size:22px">Review Management</text>
+<use href="#icon" x="635" y="650"/>
+
+<rect x="825" y="635" width="330" height="105" class="comp"/>
+<text x="990" y="667" text-anchor="middle" class="small">&lt;&lt;component&gt;&gt;</text>
+<text x="990" y="705" text-anchor="middle" class="title" style="font-size:22px">Reporting / Moderation</text>
+<use href="#icon" x="1120" y="650"/>
+
+<rect x="855" y="780" width="290" height="90" class="comp"/>
+<text x="1000" y="808" text-anchor="middle" class="small">&lt;&lt;component&gt;&gt;</text>
+<text x="1000" y="845" text-anchor="middle" class="title" style="font-size:22px">Database Access</text>
+<use href="#icon" x="1110" y="793"/>
+
+<!-- left provided interfaces and ports -->
+<circle cx="208" cy="286" r="18" class="lolli"/>
+<line x1="226" y1="286" x2="280" y2="286" class="line"/>
+<rect x="280" y="274" width="24" height="24" class="port"/>
+<line x1="304" y1="286" x2="410" y2="286" class="line"/>
+<text x="170" y="340" class="title" style="font-size:20px">Browse Listings</text>
+<circle cx="430" cy="286" r="18" fill="#86d3f7" stroke="#000" stroke-width="3"/>
+<circle cx="430" cy="286" r="26" class="socket"/>
+<text x="404" y="340" class="label">User Auth</text>
+
+<circle cx="208" cy="485" r="18" class="lolli"/>
+<line x1="226" y1="485" x2="280" y2="485" class="line"/>
+<rect x="280" y="473" width="24" height="24" class="port"/>
+<line x1="304" y1="485" x2="395" y2="485" class="line"/>
+<text x="168" y="545" class="title" style="font-size:20px">Manage Listings</text>
+<circle cx="430" cy="485" r="18" fill="#86d3f7" stroke="#000" stroke-width="3"/>
+<circle cx="430" cy="485" r="26" class="socket"/>
+<text x="388" y="542" class="label">Listing Data</text>
+
+<circle cx="208" cy="690" r="18" class="lolli"/>
+<line x1="226" y1="690" x2="280" y2="690" class="line"/>
+<rect x="280" y="678" width="24" height="24" class="port"/>
+<line x1="304" y1="690" x2="370" y2="690" class="line"/>
+<text x="170" y="748" class="title" style="font-size:20px">Reports</text>
+
+<!-- right required interfaces and ports -->
+<rect x="1448" y="260" width="24" height="24" class="port"/>
+<line x1="1472" y1="272" x2="1540" y2="272" class="line"/>
+<path d="M1575 245 A35 35 0 0 0 1575 299" class="socket"/>
+<text x="1535" y="345" class="title" style="font-size:20px">Student Identity Data</text>
+
+<rect x="1448" y="495" width="24" height="24" class="port"/>
+<line x1="1472" y1="507" x2="1540" y2="507" class="line"/>
+<path d="M1575 480 A35 35 0 0 0 1575 534" class="socket"/>
+<text x="1528" y="560" class="title" style="font-size:20px">Email/SMS Service</text>
+
+<rect x="1448" y="682" width="24" height="24" class="port"/>
+<line x1="1472" y1="694" x2="1540" y2="694" class="line"/>
+<path d="M1575 667 A35 35 0 0 0 1575 721" class="socket"/>
+<text x="1528" y="748" class="title" style="font-size:20px">Campus Policies</text>
+
+<!-- internal connectors -->
+<line x1="456" y1="286" x2="545" y2="286" class="line"/>
+<line x1="825" y1="302" x2="930" y2="302" class="line"/>
+<circle cx="960" cy="302" r="18" fill="#86d3f7" stroke="#000" stroke-width="3"/>
+<circle cx="960" cy="302" r="26" class="socket"/>
+<text x="932" y="360" class="label">User Identity</text>
+<line x1="986" y1="302" x2="986" y2="430" class="line"/>
+
+<line x1="430" y1="485" x2="470" y2="485" class="line"/>
+<line x1="780" y1="485" x2="820" y2="485" class="line"/>
+<circle cx="845" cy="485" r="18" fill="#86d3f7" stroke="#000" stroke-width="3"/>
+<circle cx="845" cy="485" r="26" class="socket"/>
+<text x="806" y="542" class="label">Listing Details</text>
+<line x1="871" y1="485" x2="845" y2="485" class="line"/>
+
+<line x1="1140" y1="485" x2="1198" y2="485" class="line"/>
+<circle cx="1225" cy="485" r="18" fill="#86d3f7" stroke="#000" stroke-width="3"/>
+<circle cx="1225" cy="485" r="26" class="socket"/>
+<text x="1223" y="565" class="label">Notification</text>
+<text x="1233" y="590" class="label">Event</text>
+<line x1="1251" y1="485" x2="1225" y2="485" class="line"/>
+
+<!-- auth info vertical connector -->
+<line x1="685" y1="350" x2="685" y2="405" class="line"/>
+<circle cx="685" cy="429" r="18" fill="#86d3f7" stroke="#000" stroke-width="3"/>
+<circle cx="685" cy="429" r="26" class="socket"/>
+<text x="723" y="438" class="label">Auth Info</text>
+
+<!-- listing data to review -->
+<line x1="625" y1="535" x2="625" y2="585" class="line"/>
+<circle cx="625" cy="610" r="18" fill="#86d3f7" stroke="#000" stroke-width="3"/>
+<circle cx="625" cy="610" r="26" class="socket"/>
+<text x="685" y="618" class="label">Listing Data</text>
+<line x1="625" y1="635" x2="625" y2="636" class="line"/>
+
+<!-- order data to reporting -->
+<line x1="992" y1="535" x2="992" y2="585" class="line"/>
+<circle cx="992" cy="610" r="18" fill="#86d3f7" stroke="#000" stroke-width="3"/>
+<circle cx="992" cy="610" r="26" class="socket"/>
+<text x="1058" y="618" class="label">Order Data</text>
+<line x1="992" y1="635" x2="992" y2="636" class="line"/>
+
+<!-- review to reporting -->
+<line x1="670" y1="690" x2="799" y2="690" class="line"/>
+<circle cx="825" cy="690" r="18" fill="#86d3f7" stroke="#000" stroke-width="3"/>
+<circle cx="825" cy="690" r="26" class="socket"/>
+<text x="792" y="748" class="label">Review Data</text>
+
+<!-- reporting to db -->
+<line x1="990" y1="740" x2="990" y2="758" class="line"/>
+<circle cx="990" cy="780" r="18" fill="#86d3f7" stroke="#000" stroke-width="3"/>
+<circle cx="990" cy="780" r="26" class="socket"/>
+<text x="1075" y="788" class="label">Persistent Data</text>
+
+<!-- reporting to campus policies -->
+<line x1="1155" y1="690" x2="1448" y2="694" class="line"/>
+<text x="1275" y="748" class="label">Policy Data</text>
+
+<!-- email service link -->
+<line x1="1450" y1="507" x2="1450" y2="507" class="line"/>
+
+</svg>
