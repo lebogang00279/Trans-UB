@@ -74,18 +74,25 @@ Screenshots alone are not source evidence. Editable source files and readable ex
 Expected repository structure:
 
 docs/
+
 ├── architecture-options.md
+
 └── quality-to-architecture.md
 
 models/
+
 ├── component-architecture.mmd
+
 └── component-architecture.svg
 
 decisions/
+
 └── ADR-001-architecture.md
 
 evidence/
+
 └── lab-07/
+
     └── README.md
 
 Revision Record
