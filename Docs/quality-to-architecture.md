@@ -54,12 +54,12 @@ If two buyers try to reserve the same Available listing at almost the same time,
 
 This concern directly influences:
 
-• module boundaries;
-• transaction handling;
-• persistence design;
-• concurrency control;
-• integration testing;
-• failure handling.
+• module boundaries
+• transaction handling
+• persistence design
+• concurrency control
+• integration testing
+• failure handling
 
 Relationship to ADR-001
 
