@@ -8,7 +8,7 @@
 - Keep payment and physical handover outside TRANS-UB.
 - Remain simple enough for the team to implement and test.
 
-## Alternative A — Simple Layered Monolith
+## Alternative A-Simple Layered Monolith
 One deployable application with presentation, service/business and persistence layers.
 
 Strengths:
@@ -21,7 +21,7 @@ Weaknesses:
 - Business rules can become scattered.
 - Data ownership and failure boundaries are less clear.
 
-## Alternative B — Modular Layered Monolith
+## Alternative B-Modular Layered Monolith
 One deployable application divided into explicit modules:
 Account, Listing, Order/Reservation, Review, Reporting/Moderation, Notification and Persistence.
 
