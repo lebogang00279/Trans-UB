@@ -21,5 +21,5 @@ Notification delivery is outside the core reservation transaction. A notificatio
 ## Verification
 Run an integration test with two near-simultaneous reservation requests for the same listing. Expected result:
 - exactly one Pending Order;
-- Listing = Reserved;
+- Listing is Reserved;
 - the competing request is rejected.
