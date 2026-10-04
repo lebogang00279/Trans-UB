@@ -196,27 +196,41 @@ Architectural Responsibilities
 Normal Outcome Summary
 
 Available Listing
+
       |
       | POST /api/listings/{listingId}/reserve
       v
+
 Final availability check
+
       |
       v
+
 Create Pending Order
+
       |
       v
+
 Record OrderStatusChange
+
       |
       v
+
 Listing -> Reserved
+
       |
       v
+
 Commit transaction
+
       |
       v
+
 Raise seller notification
+
       |
       v
+
 201 Created
 
 Main Integrity Risk
