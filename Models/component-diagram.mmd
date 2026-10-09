@@ -1,0 +1,39 @@
+flowchart LR
+    subgraph Platform["TRANS-UB Platform"]
+        AUTH[Authentication]
+        LIST[Listing Management]
+        ORD[Order / Reservation]
+        NOTIF[Notification]
+        REV[Review Management]
+        REP[Reporting / Moderation]
+        DB[Database Access]
+    end
+
+    BROWSE((Browse Listings))
+    MANAGE((Manage Listings))
+    REPORTS((Reports))
+
+    STUDENT[(Student Identity Data)]
+    EMAIL[(Email/SMS Service)]
+    POLICY[(Campus Policies)]
+
+    BROWSE --> AUTH
+    MANAGE --> LIST
+    REPORTS --> REV
+
+    AUTH --> ORD
+    AUTH --> LIST
+    LIST --> ORD
+    ORD --> NOTIF
+    LIST --> REV
+    REV --> REP
+    ORD --> REP
+    REP --> DB
+    LIST --> DB
+    ORD --> DB
+    REV --> DB
+    NOTIF --> DB
+
+    AUTH --> STUDENT
+    NOTIF --> EMAIL
+    REP --> POLICY

@@ -1,0 +1,169 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1728" height="896" viewBox="0 0 1728 896">
+<defs>
+  <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+    <path d="M0,0 L0,6 L9,3 z" fill="#000"/>
+  </marker>
+</defs>
+<style>
+  text{font-family:Arial,sans-serif;fill:#000}
+  .sys{fill:#9bd7f4;stroke:#000;stroke-width:2}
+  .comp{fill:#fff;stroke:#000;stroke-width:2}
+  .line{stroke:#000;stroke-width:2;fill:none}
+  .port{fill:#9bd7f4;stroke:#000;stroke-width:2}
+  .iface{fill:#9bd7f4;stroke:#000;stroke-width:2}
+  .socket{fill:none;stroke:#000;stroke-width:2.5}
+  .title{font-size:24px;font-weight:bold}
+  .lbl{font-size:16px}
+  .small{font-size:14px}
+</style>
+
+<!-- outer component -->
+<rect x="270" y="46" width="1245" height="815" class="sys"/>
+<text x="890" y="78" text-anchor="middle" class="lbl">&lt;&lt;component&gt;&gt;</text>
+<text x="890" y="108" text-anchor="middle" class="title">TRANS-UB Platform</text>
+
+<!-- helper component icon symbol -->
+<g id="cicon">
+  <rect x="0" y="0" width="12" height="8" fill="none" stroke="#000" stroke-width="1.6"/>
+  <rect x="0" y="13" width="12" height="8" fill="none" stroke="#000" stroke-width="1.6"/>
+  <rect x="8" y="6" width="12" height="8" fill="none" stroke="#000" stroke-width="1.6"/>
+</g>
+<use href="#cicon" x="1474" y="62"/>
+
+<!-- components -->
+<rect x="642" y="164" width="312" height="96" class="comp"/>
+<text x="798" y="195" text-anchor="middle" class="lbl">&lt;&lt;component&gt;&gt;</text>
+<text x="798" y="232" text-anchor="middle" class="title" style="font-size:22px">Authentication</text>
+<use href="#cicon" x="916" y="181"/>
+
+<rect x="424" y="357" width="280" height="108" class="comp"/>
+<text x="564" y="388" text-anchor="middle" class="lbl">&lt;&lt;component&gt;&gt;</text>
+<text x="564" y="428" text-anchor="middle" class="title" style="font-size:22px">Listing Management</text>
+<use href="#cicon" x="666" y="374"/>
+
+<rect x="845" y="357" width="247" height="108" class="comp"/>
+<text x="969" y="388" text-anchor="middle" class="lbl">&lt;&lt;component&gt;&gt;</text>
+<text x="969" y="428" text-anchor="middle" class="title" style="font-size:22px">Order / Reservation</text>
+<use href="#cicon" x="1054" y="374"/>
+
+<rect x="1252" y="357" width="236" height="108" class="comp"/>
+<text x="1370" y="388" text-anchor="middle" class="lbl">&lt;&lt;component&gt;&gt;</text>
+<text x="1370" y="428" text-anchor="middle" class="title" style="font-size:22px">Notification</text>
+<use href="#cicon" x="1450" y="374"/>
+
+<rect x="424" y="562" width="280" height="100" class="comp"/>
+<text x="564" y="592" text-anchor="middle" class="lbl">&lt;&lt;component&gt;&gt;</text>
+<text x="564" y="630" text-anchor="middle" class="title" style="font-size:22px">Review Management</text>
+<use href="#cicon" x="666" y="579"/>
+
+<rect x="845" y="562" width="294" height="100" class="comp"/>
+<text x="992" y="592" text-anchor="middle" class="lbl">&lt;&lt;component&gt;&gt;</text>
+<text x="992" y="630" text-anchor="middle" class="title" style="font-size:22px">Reporting / Moderation</text>
+<use href="#cicon" x="1101" y="579"/>
+
+<rect x="845" y="742" width="268" height="88" class="comp"/>
+<text x="979" y="770" text-anchor="middle" class="lbl">&lt;&lt;component&gt;&gt;</text>
+<text x="979" y="807" text-anchor="middle" class="title" style="font-size:22px">Database Access</text>
+<use href="#cicon" x="1075" y="757"/>
+
+<!-- left provided interfaces -->
+<circle cx="184" cy="208" r="22" class="iface"/>
+<line x1="206" y1="208" x2="258" y2="208" class="line"/>
+<rect x="258" y="196" width="24" height="24" class="port"/>
+<line x1="282" y1="208" x2="366" y2="208" class="line"/>
+<circle cx="395" cy="208" r="18" class="iface"/>
+<circle cx="395" cy="208" r="26" class="socket"/>
+<text x="20" y="188" class="title" style="font-size:20px">Browse Listings</text>
+<text x="346" y="248" class="lbl">User Query</text>
+<line x1="421" y1="208" x2="642" y2="208" class="line"/>
+
+<circle cx="184" cy="410" r="22" class="iface"/>
+<line x1="206" y1="410" x2="258" y2="410" class="line"/>
+<rect x="258" y="398" width="24" height="24" class="port"/>
+<line x1="282" y1="410" x2="326" y2="410" class="line"/>
+<circle cx="356" cy="410" r="18" class="iface"/>
+<circle cx="356" cy="410" r="26" class="socket"/>
+<text x="15" y="389" class="title" style="font-size:20px">Manage Listings</text>
+<text x="302" y="452" class="lbl">Listing Data</text>
+<line x1="382" y1="410" x2="424" y2="410" class="line"/>
+
+<circle cx="184" cy="610" r="22" class="iface"/>
+<line x1="206" y1="610" x2="258" y2="610" class="line"/>
+<rect x="258" y="598" width="24" height="24" class="port"/>
+<line x1="282" y1="610" x2="326" y2="610" class="line"/>
+<circle cx="356" cy="610" r="18" class="iface"/>
+<circle cx="356" cy="610" r="26" class="socket"/>
+<text x="15" y="589" class="title" style="font-size:20px">Submit Reports</text>
+<text x="298" y="652" class="lbl">Report Data</text>
+<line x1="382" y1="610" x2="424" y2="610" class="line"/>
+
+<!-- right required interfaces -->
+<rect x="1503" y="198" width="24" height="24" class="port"/>
+<line x1="1527" y1="210" x2="1585" y2="210" class="line"/>
+<path d="M1622 183 A34 34 0 0 0 1622 237" class="socket"/>
+<text x="1575" y="272" class="title" style="font-size:20px">Prototype</text>
+<text x="1575" y="298" class="title" style="font-size:20px">Identity Data</text>
+
+<rect x="1503" y="398" width="24" height="24" class="port"/>
+<line x1="1527" y1="410" x2="1585" y2="410" class="line"/>
+<path d="M1622 383 A34 34 0 0 0 1622 437" class="socket"/>
+<text x="1552" y="470" class="title" style="font-size:20px">Notification</text>
+<text x="1530" y="496" class="title" style="font-size:20px">Delivery Interface</text>
+
+<rect x="1503" y="766" width="24" height="24" class="port"/>
+<line x1="1527" y1="778" x2="1585" y2="778" class="line"/>
+<path d="M1622 751 A34 34 0 0 0 1622 805" class="socket"/>
+<text x="1584" y="840" class="title" style="font-size:20px">Database</text>
+
+<!-- internal interfaces and connectors -->
+<line x1="954" y1="208" x2="1040" y2="208" class="line"/>
+<circle cx="1065" cy="208" r="18" class="iface"/>
+<circle cx="1065" cy="208" r="26" class="socket"/>
+<text x="1017" y="248" class="lbl">User Identity</text>
+<line x1="1091" y1="208" x2="1503" y2="210" class="line"/>
+
+<line x1="798" y1="260" x2="798" y2="305" class="line"/>
+<circle cx="798" cy="330" r="18" class="iface"/>
+<circle cx="798" cy="330" r="26" class="socket"/>
+<text x="828" y="339" class="lbl">Authenticated User</text>
+<line x1="798" y1="356" x2="564" y2="356" class="line"/>
+
+<line x1="704" y1="410" x2="754" y2="410" class="line"/>
+<circle cx="780" cy="410" r="18" class="iface"/>
+<circle cx="780" cy="410" r="26" class="socket"/>
+<text x="720" y="450" class="lbl">Listing Details</text>
+<line x1="806" y1="410" x2="845" y2="410" class="line"/>
+
+<line x1="1092" y1="410" x2="1134" y2="410" class="line"/>
+<circle cx="1160" cy="410" r="18" class="iface"/>
+<circle cx="1160" cy="410" r="26" class="socket"/>
+<text x="1098" y="450" class="lbl">Notification Event</text>
+<line x1="1186" y1="410" x2="1252" y2="410" class="line"/>
+
+<line x1="564" y1="465" x2="564" y2="512" class="line"/>
+<circle cx="564" cy="537" r="18" class="iface"/>
+<circle cx="564" cy="537" r="26" class="socket"/>
+<text x="590" y="545" class="lbl">Listing Data</text>
+<line x1="564" y1="563" x2="564" y2="562" class="line"/>
+
+<line x1="969" y1="465" x2="969" y2="512" class="line"/>
+<circle cx="969" cy="537" r="18" class="iface"/>
+<circle cx="969" cy="537" r="26" class="socket"/>
+<text x="998" y="545" class="lbl">Order Data</text>
+<line x1="969" y1="563" x2="969" y2="562" class="line"/>
+
+<line x1="704" y1="610" x2="792" y2="610" class="line"/>
+<circle cx="818" cy="610" r="18" class="iface"/>
+<circle cx="818" cy="610" r="26" class="socket"/>
+<text x="760" y="650" class="lbl">Review Data</text>
+<line x1="844" y1="610" x2="845" y2="610" class="line"/>
+
+<line x1="992" y1="662" x2="992" y2="700" class="line"/>
+<circle cx="992" cy="724" r="18" class="iface"/>
+<circle cx="992" cy="724" r="26" class="socket"/>
+<text x="1018" y="733" class="lbl">Persistent Data</text>
+<line x1="992" y1="750" x2="992" y2="742" class="line"/>
+
+<line x1="1113" y1="786" x2="1503" y2="778" class="line"/>
+
+</svg>

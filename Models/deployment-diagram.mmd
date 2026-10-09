@@ -1,0 +1,48 @@
+---
+title: TRANS-UB Deployment View (DEP-01 v1)
+---
+flowchart LR
+
+    subgraph CLIENTS["CLIENT DEVICES"]
+        BUYER["&lt;&lt;device&gt;&gt;<br/>Student buyer phone or lab PC<br/>Browser"]
+        SELLER["&lt;&lt;device&gt;&gt;<br/>Student seller phone or lab PC<br/>Browser"]
+        ADMINDEV["&lt;&lt;device&gt;&gt;<br/>Platform administrator PC<br/>Browser"]
+    end
+
+    subgraph TRUST["TRANS-UB TRUST BOUNDARY"]
+        subgraph EDGE["&lt;&lt;node&gt;&gt; Edge host"]
+            PROXY["Reverse proxy<br/>TLS termination"]
+        end
+
+        subgraph APPHOST["&lt;&lt;node&gt;&gt; Application host"]
+            WEB["&lt;&lt;executionEnvironment&gt;&gt; web-1<br/>&lt;&lt;artifact&gt;&gt; transub-app:1.0<br/>Account/Auth, Listing, Order/Reservation,<br/>Review, Reporting/Moderation"]
+            WORKER["&lt;&lt;executionEnvironment&gt;&gt; worker-1<br/>&lt;&lt;artifact&gt;&gt; transub-app:1.0<br/>Notification, order-expiry sweep<br/>RECOVERY OWNER"]
+        end
+
+        subgraph DBHOST["&lt;&lt;node&gt;&gt; Database host"]
+            DB[("Transactional store<br/>StudentAccount, Listing, ListingApproval,<br/>Order, OrderStatusChange, Review, Report,<br/>Notification (outcome + attempts)<br/>DURABLE STATE")]
+        end
+    end
+
+    PROVIDER["&lt;&lt;node&gt;&gt; External notification provider<br/>Email / SMS<br/>No delivery guarantee assumed"]
+
+    BUYER -->|HTTPS| PROXY
+    SELLER -->|HTTPS| PROXY
+    ADMINDEV -->|HTTPS| PROXY
+
+    PROXY -->|HTTP over loopback<br/>same host only| WEB
+
+    WEB -->|"DB protocol: not yet selected<br/>reservation commits atomically"| DB
+    WORKER -->|"DB protocol: not yet selected<br/>claims pending work"| DB
+
+    WORKER -->|"HTTPS<br/>outside the reservation transaction"| PROVIDER
+
+    classDef client fill:#ffffff,stroke:#000,stroke-width:2px
+    classDef app fill:#e8f4fb,stroke:#000,stroke-width:2px
+    classDef store fill:#e9f5ec,stroke:#000,stroke-width:2px
+    classDef ext fill:#fdf3e3,stroke:#000,stroke-width:2px
+
+    class BUYER,SELLER,ADMINDEV client
+    class PROXY,WEB,WORKER app
+    class DB store
+    class PROVIDER ext

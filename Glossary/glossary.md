@@ -1,25 +1,30 @@
 # TRANS-UB — Glossary
 
-Terms as used across the project documents ([Docs/project-proposal-and-approval.md](../Docs/project-proposal-and-approval.md), [Decisions/D-001.md](../Decisions/D-001.md), [Models/system-context.md](../Models/system-context.md)).
-
 | Term | Definition |
 |---|---|
-| **TRANS-UB** | Working title of the project: a central online marketplace for University of Botswana students to list, find, compare and order goods and services from other students. |
-| **Student Buyer** | A verified UB student using the platform to search, compare and order listings, and to confirm receipt and leave reviews. |
-| **Student Seller** | A verified UB student who creates and manages listings, fulfils orders, and arranges handover with buyers. |
-| **Listing** | A single item or service posted for sale by a Student Seller, with a category, price and availability status. |
-| **Listing status** | The lifecycle state of a listing: **Available** (can be ordered), **Reserved** (an order against it is pending handoff), **Sold**/**Unavailable** (no longer orderable). |
-| **Order** | The record created when a buyer confirms a cart, tracking the transaction between a specific buyer and seller for a specific listing. |
-| **Order status** | The lifecycle state of an order: **Pending handoff** → **Delivered** (seller-marked) → **Completed** (buyer-confirmed), or **Cancelled**. |
-| **Handoff / handover** | The offline, in-person exchange of the item or service and payment between buyer and seller, arranged outside the platform (see [Decisions/D-001.md](../Decisions/D-001.md)). |
-| **Verification (student ID verification)** | The registration check tying an account to a valid UB student ID; simulated with synthetic data in the prototype rather than connected to real university systems. |
-| **Review** | A rating and comment a buyer may submit about a seller. Gated so it can only be submitted once, and only after that buyer's order with that seller reaches Completed. |
-| **Seller rating** | The seller's average score, recalculated only from reviews tied to Completed (confirmed) transactions. |
-| **Reputation system** | The combination of order confirmation and gated reviews that lets buyers judge whether a seller is trustworthy. |
-| **Platform administrator** | The role (initially the project team, later a student moderator) that approves/removes listings, suspends accounts, and resolves reports. |
-| **Moderation** | The administrator's process of reviewing listings before or after they go live and acting on reports. |
-| **Report** | A flag raised by a user (or the SRC) against a listing or account, routed to the Platform administrator for resolution. |
-| **SRC** | Student Representative Council — the student oversight body with an interest in disputes and prohibited-goods issues; can request summaries and escalate disputes but does not use the system day to day. |
-| **University Management** | Indirect stakeholder with a policy and liability interest in campus trading; has no direct access to the system (see [Models/system-context.md](../Models/system-context.md)). |
-| **Vertical slice** | The single, end-to-end path (sign in → browse → order → handoff → confirm → review) the team builds first, because it produces the transaction record the rest of the system depends on. |
-| **Synthetic/anonymised data** | Fabricated student accounts, listings and orders used for development and testing so no real UB student records are needed. |
+| **TRANS-UB** | Student marketplace prototype for University of Botswana students to list, find, compare, reserve and record transactions for approved low-risk physical goods. |
+| **Student Buyer** | Eligible student account acting as buyer: searches, compares, reserves items, confirms receipt and may review Completed transactions. |
+| **Student Seller** | Eligible student account acting as seller: creates listings, responds to orders and records delivery after offline handover. |
+| **Platform Administrator** | Moderation role that approves/removes listings, reviews reports, may suspend accounts and records or escalates dispute outcomes. |
+| **SRC** | External stakeholder that may receive serious unresolved dispute escalations. |
+| **Listing** | One approved low-risk physical item offered by a Student Seller. |
+| **Pending Approval** | Listing is awaiting an administrator decision and cannot be reserved. |
+| **Available** | Listing may be reserved by an eligible buyer. |
+| **Reserved** | Listing has a live order and cannot be reserved by another buyer. |
+| **Sold** | Listing terminal state after its associated order reaches Completed. |
+| **Removed** | Listing has been withdrawn or removed through moderation and cannot be ordered. |
+| **Order** | Transaction record linking one buyer, one seller and one listing. It is created directly when reservation succeeds; no shopping cart is required in the Phase 1 baseline. |
+| **Pending** | Order has been created and is waiting for seller response. |
+| **Accepted** | Seller accepted the order; offline handover may proceed. |
+| **Rejected** | Seller declined the order; the listing is released to Available. |
+| **Expired** | Seller did not respond within the 24-hour deadline; the listing is released to Available. |
+| **Cancelled** | Buyer cancelled before physical handover; the listing is released to Available. |
+| **Delivered** | Seller recorded that physical handover occurred. |
+| **Completed** | Buyer confirmed receipt; the listing becomes Sold and the order becomes eligible for one review. |
+| **OrderStatusChange** | History record of an order transition, including the time and whether the change was caused by a user or the system. |
+| **Notification** | Record that a system notice is owed or was attempted for a student, including delivery outcome/retry information. |
+| **Review** | One rating/comment linked to one Completed order. |
+| **Seller rating** | Rating derived from reviews linked to Completed orders. |
+| **Report** | User-raised issue against a listing, account or order. States: Open, Under Review, Resolved or Escalated. |
+| **Handover** | Offline physical exchange arranged directly by buyer and seller outside TRANS-UB. |
+| **Synthetic verification** | Prototype student verification using fabricated test data rather than official UB systems. |

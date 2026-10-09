@@ -1,78 +1,129 @@
-GIVEN WHEN THEN SCENARIO 
+# TRANS-UB Acceptance Criteria
 
-1. User Registration
-    
-• Scenario 1: Seller Account Creation 
-o Given a new user is on the registration page. 
-o When they choose "Seller" and fill in their name, student email, password, 
-shop name, and category of goods or services. 
-o Then the system validates the student email against the simulated student 
-database. 
-o And if valid, sets up the seller profile and opens the seller dashboard.
+These criteria use the authoritative FR-01 to FR-10 baseline and the direct UC-05 reservation workflow. The Phase 1 baseline does **not** use a shopping cart.
 
-• Scenario 2: Buyer Account Creation 
-o Given a new user is on the registration page. 
-o When they choose "Buyer" and enter their name, student email, and 
-password. 
-o Then the system validates the student email against the simulated student 
-database. 
-o And if valid, creates the account and opens the buyer dashboard. 
+## AC-01 — Registration and login (FR-01)
 
-2. User Login 
+**Given** a student uses valid synthetic student verification data  
+**When** the student completes prototype registration  
+**Then** the system creates an eligible account.
 
-• Scenario 3: Successful Login with Valid Credentials 
-o Given a registered user is on the login page. 
-o When they enter a valid student email and correct password. 
-o Then the system logs them in and takes them to their dashboard. 
+**Given** an account is registered and active  
+**When** correct credentials are supplied  
+**Then** the user is logged in.
 
-3. Product Search 
+**Given** invalid synthetic verification data  
+**When** registration is attempted  
+**Then** registration is rejected.
 
-• Scenario 4: Item Found - Browsing and Comparing 
-o Given a buyer enters an item in the search bar. 
-o When matching listings exist. 
-o Then the buyer is shown a scrollable list of results and can filter by price 
-range. 
-o And the buyer can compare prices, sellers, and ratings. 
+## AC-02 — Listing creation and editing (FR-02)
 
-• Scenario 5: Item Not Found - Showing Alternatives 
-o Given a buyer enters an item they want to purchase in the search bar. 
-o When no listing matches that exact search term. 
-o Then the system displays a message that no exact match was found. 
-o And shows alternative listings based on related or similar keywords, so the 
-buyer can still compare available options. 
+**Given** an eligible seller  
+**When** the seller submits a complete low-risk physical-good listing  
+**Then** the listing is stored for approval.
 
-4. Shopping Cart
-   
-• Scenario 6: Adding an Item to the Cart 
-o Given a buyer is viewing an available listing. 
-o When they add it to their cart. 
-o Then the listing is reserved and reflected in the buyer's cart. 
+**Given** a prohibited or incomplete listing  
+**When** the seller submits it  
+**Then** publication is rejected or the listing remains unavailable to buyers.
 
-5. Confirming an Order
+## AC-03 — Listing moderation (FR-03)
 
-• Scenario 7: Buyer Confirms an Order 
-o Given a buyer has a reserved item in their cart. 
-o When they confirm the order. 
-o Then an order is created with status "Awaiting Collection". 
-o And the seller is notified. 
+**Given** a listing awaiting approval  
+**When** the Platform Administrator approves it  
+**Then** its status becomes **Available**.
 
-• Scenario 8: Order Confirmation Fails Because the Item Was Already Sold 
-o Given a buyer has an item in their cart. 
-o When the seller marks that item as sold before the buyer confirms. 
-o Then the confirmation is rejected and no order is created. 
-o And the item is automatically removed from the buyer's cart. 
+**Given** a listing violates scope or policy  
+**When** the Platform Administrator rejects or removes it  
+**Then** buyers cannot reserve it.
 
-6. Handoff & Meetup Coordination
-   
-• Scenario 9: Seller Proposes a Meetup Location 
-o Given an order exists with status "Pending handoff". 
-o When the seller opens the order and enters a location on campus and a 
-time, then clicks "Send Handoff Details". 
-o Then the buyer receives the location and time on their order page. 
-o And the order status remains "Pending handoff".
+## AC-04 — Search and comparison (FR-04)
 
-• Scenario 10: Buyer Accepts Meetup Spot 
-o Given a buyer sees a proposed meetup location and time from the seller. 
-o When the buyer clicks "Confirm Meetup". 
-o Then the system displays "Meetup confirmed!" 
-o And the meeting details show up on both the buyer and seller dashboards.
+**Given** approved Available listings exist  
+**When** a buyer searches or filters by relevant criteria  
+**Then** matching listings are displayed with current price, category, seller and availability information.
+
+## AC-05 — Reserve an available listing (FR-05 / UC-05)
+
+**Given** an eligible buyer is viewing an approved **Available** listing  
+**When** the buyer confirms the reservation  
+**Then** exactly one **Pending** order is created  
+**And** the listing changes from **Available** to **Reserved**  
+**And** a 24-hour seller-response deadline is recorded  
+**And** the seller is notified or the notification is queued/recorded for retry.
+
+**Given** the listing is no longer Available when confirmation is processed  
+**When** the system rechecks availability  
+**Then** no new order is created  
+**And** the current listing state is preserved  
+**And** the buyer receives a refusal reason.
+
+**Given** two buyers confirm the same listing at nearly the same time  
+**When** both requests are processed  
+**Then** only one live reservation succeeds.
+
+## AC-06 — Seller response (FR-06)
+
+**Given** a Pending order  
+**When** the seller accepts it  
+**Then** the order becomes **Accepted**  
+**And** the listing remains **Reserved**.
+
+**Given** a Pending order  
+**When** the seller rejects it  
+**Then** the order becomes **Rejected**  
+**And** the listing returns to **Available**.
+
+## AC-07 — Expiry and cancellation (FR-07)
+
+**Given** a Pending order  
+**When** 24 hours pass without seller response  
+**Then** the order becomes **Expired**  
+**And** the listing returns to **Available**.
+
+**Given** a live order before physical handover  
+**When** the buyer cancels  
+**Then** the order becomes **Cancelled**  
+**And** the listing returns to **Available**.
+
+## AC-08 — Delivery and completion (FR-08)
+
+**Given** an Accepted order and an offline handover has taken place  
+**When** the seller records delivery  
+**Then** the order becomes **Delivered**.
+
+**Given** a Delivered order  
+**When** the buyer confirms receipt  
+**Then** the order becomes **Completed**  
+**And** the listing becomes **Sold**.
+
+## AC-09 — Reviews (FR-09)
+
+**Given** an order is not Completed  
+**When** a review is submitted  
+**Then** the review is rejected.
+
+**Given** a Completed order with no existing review  
+**When** its buyer submits a review  
+**Then** one review is stored and contributes to the seller rating.
+
+**Given** a review already exists for the order  
+**When** another review is submitted  
+**Then** the second review is rejected.
+
+## AC-10 — Reports and disputes (FR-10)
+
+**Given** a buyer or seller identifies a problem with a listing, user or order  
+**When** a report is submitted  
+**Then** a Report is stored with status **Open**.
+
+**Given** an Open report  
+**When** the Platform Administrator begins review  
+**Then** it becomes **Under Review**.
+
+**Given** the issue can be resolved internally  
+**When** the administrator records the outcome  
+**Then** the report becomes **Resolved**.
+
+**Given** a serious issue remains unresolved  
+**When** escalation is required  
+**Then** the report becomes **Escalated** and may be referred to the SRC.
