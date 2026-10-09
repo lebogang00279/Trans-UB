@@ -1,0 +1,5 @@
+```
+Buyer->>Request: 1. Reserve Listing
+Request->>DB: 2. Atomic Commit
+DB-->>Request: 3. Commit Success
+Request-->>Buyer: 4. Order Reserved (201)
