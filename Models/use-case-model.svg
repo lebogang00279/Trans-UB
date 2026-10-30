@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="1100" viewBox="0 0 1700 1100">
+<style>
+text{font-family:Arial,sans-serif;fill:#000}
+.boundary{fill:#fff;stroke:#000;stroke-width:2.2}
+.uc{fill:#fff;stroke:#000;stroke-width:2}
+.line{stroke:#000;stroke-width:1.8;fill:none}
+.title{font-size:30px;font-weight:bold}
+.system{font-size:22px;font-weight:bold}
+.label{font-size:14px}
+.actor{font-size:14px}
+</style>
+
+<text x="850" y="45" text-anchor="middle" class="title">TRANS-UB Use Case Model</text>
+<rect x="320" y="90" width="1060" height="930" class="boundary"/>
+<text x="850" y="125" text-anchor="middle" class="system">TRANS-UB Platform</text>
+
+<!-- Actors: one occurrence each -->
+<g>
+<circle cx="120" cy="240" r="17" class="line"/>
+<line x1="120" y1="257" x2="120" y2="310" class="line"/>
+<line x1="90" y1="280" x2="150" y2="280" class="line"/>
+<line x1="120" y1="310" x2="96" y2="348" class="line"/>
+<line x1="120" y1="310" x2="144" y2="348" class="line"/>
+<text x="120" y="378" text-anchor="middle" class="actor">Student Buyer</text>
+</g>
+
+<g>
+<circle cx="120" cy="790" r="17" class="line"/>
+<line x1="120" y1="807" x2="120" y2="860" class="line"/>
+<line x1="90" y1="830" x2="150" y2="830" class="line"/>
+<line x1="120" y1="860" x2="96" y2="898" class="line"/>
+<line x1="120" y1="860" x2="144" y2="898" class="line"/>
+<text x="120" y="928" text-anchor="middle" class="actor">Student Seller</text>
+</g>
+
+<g>
+<circle cx="1545" cy="285" r="17" class="line"/>
+<line x1="1545" y1="302" x2="1545" y2="355" class="line"/>
+<line x1="1515" y1="325" x2="1575" y2="325" class="line"/>
+<line x1="1545" y1="355" x2="1521" y2="393" class="line"/>
+<line x1="1545" y1="355" x2="1569" y2="393" class="line"/>
+<text x="1545" y="423" text-anchor="middle" class="actor">Platform Administrator</text>
+</g>
+
+<g>
+<circle cx="1545" cy="830" r="17" class="line"/>
+<line x1="1545" y1="847" x2="1545" y2="900" class="line"/>
+<line x1="1515" y1="870" x2="1575" y2="870" class="line"/>
+<line x1="1545" y1="900" x2="1521" y2="938" class="line"/>
+<line x1="1545" y1="900" x2="1569" y2="938" class="line"/>
+<text x="1545" y="968" text-anchor="middle" class="actor">SRC</text>
+</g>
+
+<!-- LEFT: buyer and shared use cases -->
+<ellipse cx="520" cy="190" rx="145" ry="36" class="uc"/>
+<text x="520" y="196" text-anchor="middle" class="label">Browse / Search / Filter / Compare</text>
+
+<ellipse cx="520" cy="285" rx="132" ry="36" class="uc"/>
+<text x="520" y="291" text-anchor="middle" class="label">Reserve Available Listing</text>
+
+<ellipse cx="520" cy="380" rx="115" ry="36" class="uc"/>
+<text x="520" y="386" text-anchor="middle" class="label">Confirm Receipt</text>
+
+<ellipse cx="520" cy="475" rx="105" ry="36" class="uc"/>
+<text x="520" y="481" text-anchor="middle" class="label">Submit Review</text>
+
+<!-- shared use cases placed between buyer/seller -->
+<ellipse cx="675" cy="580" rx="110" ry="36" class="uc"/>
+<text x="675" y="586" text-anchor="middle" class="label">Register / Login</text>
+
+<ellipse cx="675" cy="675" rx="105" ry="36" class="uc"/>
+<text x="675" y="681" text-anchor="middle" class="label">Submit Report</text>
+
+<!-- seller use cases -->
+<ellipse cx="520" cy="785" rx="120" ry="36" class="uc"/>
+<text x="520" y="791" text-anchor="middle" class="label">Create / Edit Listing</text>
+
+<ellipse cx="520" cy="880" rx="120" ry="36" class="uc"/>
+<text x="520" y="886" text-anchor="middle" class="label">Accept / Reject Order</text>
+
+<ellipse cx="520" cy="965" rx="105" ry="34" class="uc"/>
+<text x="520" y="971" text-anchor="middle" class="label">Mark Delivered</text>
+
+<!-- RIGHT: admin and SRC use cases -->
+<ellipse cx="1150" cy="235" rx="155" ry="36" class="uc"/>
+<text x="1150" y="241" text-anchor="middle" class="label">Approve / Reject / Remove Listing</text>
+
+<ellipse cx="1150" cy="365" rx="110" ry="36" class="uc"/>
+<text x="1150" y="371" text-anchor="middle" class="label">Resolve Report</text>
+
+<ellipse cx="1150" cy="790" rx="135" ry="36" class="uc"/>
+<text x="1150" y="796" text-anchor="middle" class="label">Escalate Serious Dispute</text>
+
+<!-- STRAIGHT ASSOCIATIONS, carefully separated -->
+
+<!-- Buyer to buyer-only use cases -->
+<line x1="150" y1="280" x2="378" y2="205" class="line"/>
+<line x1="150" y1="280" x2="388" y2="285" class="line"/>
+<line x1="150" y1="280" x2="408" y2="365" class="line"/>
+<line x1="150" y1="280" x2="418" y2="454" class="line"/>
+
+<!-- Buyer to shared -->
+<line x1="150" y1="280" x2="575" y2="555" class="line"/>
+<line x1="150" y1="280" x2="585" y2="653" class="line"/>
+
+<!-- Seller to shared -->
+<line x1="150" y1="830" x2="586" y2="603" class="line"/>
+<line x1="150" y1="830" x2="588" y2="698" class="line"/>
+
+<!-- Seller to seller-only -->
+<line x1="150" y1="830" x2="403" y2="794" class="line"/>
+<line x1="150" y1="830" x2="402" y2="870" class="line"/>
+<line x1="150" y1="830" x2="416" y2="949" class="line"/>
+
+<!-- Admin -->
+<line x1="1515" y1="325" x2="1300" y2="248" class="line"/>
+<line x1="1515" y1="325" x2="1259" y2="365" class="line"/>
+<line x1="1515" y1="325" x2="1277" y2="768" class="line"/>
+
+<!-- SRC -->
+<line x1="1515" y1="870" x2="1278" y2="802" class="line"/>
+
+</svg>
