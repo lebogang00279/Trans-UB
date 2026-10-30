@@ -1,0 +1,73 @@
+classDiagram
+direction LR
+
+class ReservationController {
+  +reserve(listingId, buyerId, note)
+}
+class ReservationService {
+  +reserve(buyerId, listingId, note) ReservationResult
+}
+class ListingRepository {
+  <<interface>>
+  +findById(id) Listing
+  +reserveIfAvailable(id, orderRef) boolean
+}
+class OrderRepository {
+  <<interface>>
+  +save(order)
+  +existsLiveForListing(listingId) boolean
+}
+class OrderStatusChangeRepository {
+  <<interface>>
+  +save(change)
+}
+class NotificationPort {
+  <<interface>>
+  +notifySellerReservation(order, listing)
+}
+class Listing {
+  +listingId
+  +sellerId
+  +status
+  +isReservableBy(buyerId) boolean
+  +reserve(orderRef)
+  +release()
+  +markSold()
+}
+class Order {
+  +reference
+  +buyerId
+  +listingId
+  +placedAt
+  +responseDeadline
+  +status
+  +accept()
+  +reject()
+  +cancel()
+  +expire()
+  +markDelivered()
+  +confirmReceipt()
+}
+class OrderStatusChange {
+  +fromStatus
+  +toStatus
+  +changedAt
+  +actorType
+}
+class PersistenceAdapter
+class NotificationAdapter
+
+ReservationController --> ReservationService
+ReservationService --> ListingRepository
+ReservationService --> OrderRepository
+ReservationService --> OrderStatusChangeRepository
+ReservationService --> NotificationPort
+ReservationService --> Listing
+ReservationService --> Order
+ReservationService --> OrderStatusChange
+PersistenceAdapter ..|> ListingRepository
+PersistenceAdapter ..|> OrderRepository
+PersistenceAdapter ..|> OrderStatusChangeRepository
+NotificationAdapter ..|> NotificationPort
+Order --> Listing
+Order --> OrderStatusChange

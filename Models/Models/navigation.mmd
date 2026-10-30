@@ -1,0 +1,15 @@
+flowchart TD
+LOGIN[Register / Login] --> HOME[Browse / Search]
+HOME --> RESULTS[Search Results]
+RESULTS --> DETAIL[Listing Detail]
+DETAIL --> TERMS[Reservation Terms]
+TERMS --> CONFIRM[Confirm Reservation]
+CONFIRM --> SUCCESS[Reservation Confirmation]
+CONFIRM --> STALE[Unavailable / Stale Listing]
+SUCCESS --> ORDERS[My Orders]
+STALE --> RESULTS
+
+ADMIN[Admin Dashboard] --> REPORTS[Reports]
+REPORTS --> REPORTDETAIL[Report Detail]
+REPORTDETAIL --> RESOLVE[Resolve]
+REPORTDETAIL --> ESCALATE[Escalate to SRC]
